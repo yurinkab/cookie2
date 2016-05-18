@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {border-radius: 5px; outline:none;}
+    </style>
+</head>
+<body>
+<h4>Who Are you And what is your favourite Color?</h4>
+<p>your Name: <input type="text" placeholder="What is your name?" id="inpu"></p>
+
+<p>your Favorite Color:<select id="ddl">
+    <option value="select color">Select Your Favorite color</option>
+    <option value="red">red</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+    <option value="aqua">aqua</option>
+    <option value="purple">purple</option>
+    <option value="yellow">yellow</option>
+</select> <button onclick="setCookie()" id="but2">Save Preferences!</button>
+
+</p>
+<p id="text"></p>
+
+<script>
+
+
+    window.onload = function() {
+if(document.cookie.length != 0) {
+    /*
+    document.getElementById("ddl").style.display ="none";
+    document.getElementById("inpu").style.display ="none";
+    document.getElementById("but2").style.display ="none";
+    */
+    var cookie = document.cookie.split("=");
+    var text= document.getElementById("text").innerHTML= "Welcome Back " + "<b>" + cookie[1] + "</b>" + " We know that your favourite color is " + "<span style='color:" + cookie[3] + "'>" + cookie[3] + "</span>";
+    document.getElementById("ddl").value = cookie[3];
+    document.getElementById("inpu").value = cookie[1];
+
+}
+
+    };
+
+    function setCookie() {
+
+        var inp = document.getElementById("inpu").value;
+        var col = document.getElementById("ddl").value;
+
+        document.cookie = "name=" + inp + "= ;Fri, Aug 4 2016 01:00:00 UTC";
+        document.cookie = "color=" + col + " ;Fri, Aug 4 2016 01:00:00 UTC";
+
+
+    }
+</script>
+</body>
+</html>
